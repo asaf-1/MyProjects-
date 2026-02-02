@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Universal Downloader</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 10px; width: 340px; }
+    label { display:block; font-size:12px; margin-top:8px; }
+    input[type="text"], input[type="number"] { width: 100%; box-sizing: border-box; padding: 6px; }
+    .row { display:flex; gap:8px; }
+    .row > div { flex:1; }
+    .btnrow { display:flex; gap:8px; margin-top:10px; }
+    button { flex:1; padding:8px; cursor:pointer; }
+    .status { margin-top:10px; white-space:pre-wrap; background:#f3f3f3; padding:8px; border-radius:6px; font-size:12px; min-height: 90px;}
+    .small { font-size:11px; color:#555; margin-top:4px; }
+    .checks { display:flex; gap:14px; margin-top:8px; }
+    .checks label { display:flex; gap:6px; align-items:center; margin-top:0; }
+    .footer { display:flex; justify-content:space-between; margin-top:8px; font-size:11px; color:#555; }
+  </style>
+</head>
+<body>
+  <label>File types (comma separated)</label>
+  <input id="fileTypes" type="text" placeholder="pdf,zip,rar,7z,doc,docx,xls,xlsx,ppt,pptx,csv,json,xml" />
+
+  <div class="small">Tip: put only if you want PDFs etc.</div>
+
+  <div class="row">
+    <div>
+      <label>Include (text/regex)</label>
+      <input id="includePattern" type="text" placeholder="e.g. .*(pdf|docx)$" />
+    </div>
+    <div>
+      <label>Exclude (text/regex)</label>
+      <input id="excludePattern" type="text" placeholder="e.g. login|signup" />
+    </div>
+  </div>
+
+  <label>Subfolder inside Downloads</label>
+  <input id="subfolder" type="text" placeholder="UniversalDownloader" />
+
+  <div class="row">
+    <div>
+      <label>Max pages</label>
+      <input id="maxPages" type="number" min="1" max="5000" value="250" />
+    </div>
+    <div>
+      <label>Max depth</label>
+      <input id="maxDepth" type="number" min="0" max="10" value="2" />
+    </div>
+  </div>
+
+  <div class="checks">
+    <label><input id="sameOriginOnly" type="checkbox" checked />Same-origin only</label>
+    <label><input id="renderMode" type="checkbox" />Render mode (tabs)</label>
+  </div>
+
+  <div class="small">
+    Render mode is slower but helps when links appear only after JS renders.
+  </div>
+
+  <div class="btnrow">
+    <button id="scanBtn">Scan current page</button>
+    <button id="crawlBtn">Crawl site</button>
+  </div>
+
+  <div class="btnrow">
+    <button id="downloadBtn">Download scanned</button>
+    <button id="stopBtn">Stop</button>
+  </div>
+
+  <div class="btnrow">
+    <button id="exportBtn">Export CSV</button>
+    <button id="clearBtn">Clear</button>
+  </div>
+
+  <div class="footer">
+    <div id="scannedCount">scanned: 0</div>
+    <div id="runState">idle</div>
+  </div>
+
+  <div id="status" class="status"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

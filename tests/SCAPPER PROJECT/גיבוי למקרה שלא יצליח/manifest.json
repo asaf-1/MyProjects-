@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Universal Downloader",
+  "version": "1.0.0",
+  "description": "Scan current page or crawl site for downloadable files and export/download results.",
+  "action": { "default_popup": "popup.html" },
+  "permissions": ["storage", "downloads", "tabs", "scripting"],
+  "host_permissions": ["http://*/*", "https://*/*"],
+  "background": { "service_worker": "service_worker.js" },
+  "content_scripts": [
+    {
+      "matches": ["https://www.gov.il/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

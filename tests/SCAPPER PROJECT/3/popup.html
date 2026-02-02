@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Universal Downloader</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 10px; width: 320px; }
+    label { display:block; font-size:12px; margin-top:8px; }
+    input[type="text"], input[type="number"] { width: 100%; box-sizing: border-box; padding: 6px; }
+    .row { display:flex; gap:8px; }
+    .row > div { flex:1; }
+    .btnrow { display:flex; gap:8px; margin-top:10px; }
+    button { flex:1; padding:8px; cursor:pointer; }
+    .status { margin-top:10px; white-space:pre; background:#f3f3f3; padding:8px; border-radius:6px; font-size:12px; }
+  </style>
+</head>
+<body>
+  <label>File types (comma separated)</label>
+  <input id="fileTypes" type="text" value="pdf,zip,rar,7z,doc,docx,xls,xlsx,ppt,pptx,csv,json,xml" />
+
+  <div class="row">
+    <div>
+      <label>Include</label>
+      <input id="include" type="text" placeholder="optional" />
+    </div>
+    <div>
+      <label>Exclude</label>
+      <input id="exclude" type="text" placeholder="optional" />
+    </div>
+  </div>
+
+  <label>Subfolder inside Downloads</label>
+  <input id="folder" type="text" value="UniversalDownloader" />
+
+  <div class="row">
+    <div>
+      <label>Max pages</label>
+      <input id="maxPages" type="number" value="200" />
+    </div>
+    <div>
+      <label>Max depth</label>
+      <input id="maxDepth" type="number" value="2" />
+    </div>
+  </div>
+
+  <label style="margin-top:8px;">
+    <input id="sameOrigin" type="checkbox" checked />
+    Same-origin only
+  </label>
+
+  <div class="btnrow">
+    <button id="crawlSite">Crawl site</button>
+    <button id="stop">Stop</button>
+  </div>
+  <div class="btnrow">
+    <button id="exportCsv">Export CSV</button>
+  </div>
+
+  <div class="status" id="status">idle</div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
