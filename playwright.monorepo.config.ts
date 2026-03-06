@@ -19,7 +19,6 @@ export default defineConfig({
   testIgnore: [
     ...existingIgnore,
     'tests/SCAPPER PROJECT/**',
-    'tests/GeminiSheets.spec.ts',
     'tests/test-1.spec.ts',
   ],
 });
